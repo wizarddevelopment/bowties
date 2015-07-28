@@ -1,7 +1,7 @@
 require 'rails/generators'
 require 'rails/generators/rails/app/app_generator'
 
-module Suspenders
+module Bowties
   class AppGenerator < Rails::Generators::AppGenerator
     class_option :database, type: :string, aliases: "-d", default: "postgresql",
       desc: "Configure for selected database (options: #{DATABASES.join("/")})"
@@ -25,18 +25,18 @@ module Suspenders
       desc: "Don't run bundle install"
 
     def finish_template
-      invoke :suspenders_customization
+      invoke :bowties_customization
       super
     end
 
-    def suspenders_customization
+    def bowties_customization
       invoke :customize_gemfile
       invoke :setup_development_environment
       invoke :setup_test_environment
       invoke :setup_production_environment
       invoke :setup_staging_environment
       invoke :setup_secret_token
-      invoke :create_suspenders_views
+      invoke :create_bowties_views
       invoke :configure_app
       invoke :setup_stylesheets
       invoke :install_bitters
@@ -121,8 +121,8 @@ module Suspenders
       build :setup_secret_token
     end
 
-    def create_suspenders_views
-      say 'Creating suspenders views'
+    def create_bowties_views
+      say 'Creating bowties views'
       build :create_partials_directory
       build :create_shared_flashes
       build :create_shared_javascripts
@@ -221,14 +221,14 @@ module Suspenders
     end
 
     def outro
-      say 'Congratulations! You just pulled our suspenders.'
+      say 'Congratulations! You just pulled our bowties.'
       say "Remember to run 'rails generate airbrake' with your API key."
     end
 
     protected
 
     def get_builder_class
-      Suspenders::AppBuilder
+      Bowties::AppBuilder
     end
 
     def using_active_record?

@@ -1,0 +1,6 @@
+test:
+  pre:
+    - git config --global user.name 'Circle'
+    - git config --global user.email 'circle@example.com'
+  override:
+    - bundle exec rake
