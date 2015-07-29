@@ -44,6 +44,7 @@ module Bowties
       invoke :copy_miscellaneous_files
       invoke :customize_error_pages
       invoke :remove_routes_comment_lines
+      invoke :autocorrect_for_rubocop_style
       invoke :setup_git
       invoke :setup_database
       invoke :create_heroku_apps
@@ -89,7 +90,6 @@ module Bowties
     def setup_test_environment
       say 'Setting up the test environment'
       build :set_up_factory_girl_for_rspec
-      build :set_up_hound
       build :generate_rspec
       build :configure_rspec
       build :configure_background_jobs_for_rspec
@@ -99,6 +99,7 @@ module Bowties
       build :configure_i18n_for_test_environment
       build :configure_i18n_tasks
       build :configure_action_mailer_in_specs
+      build :set_up_rubocop
     end
 
     def setup_production_environment
@@ -138,6 +139,7 @@ module Bowties
       build :disable_xml_params
       build :fix_i18n_deprecation_warning
       build :setup_default_rake_task
+      build :add_rubocop_to_default_rake_task
       build :configure_unicorn
       build :setup_foreman
     end
@@ -218,6 +220,11 @@ module Bowties
 
     def remove_routes_comment_lines
       build :remove_routes_comment_lines
+    end
+
+    def autocorrect_for_rubocop_style
+      say 'Auto-correcting for rubocop style'
+      build :autocorrect_for_rubocop_style
     end
 
     def outro

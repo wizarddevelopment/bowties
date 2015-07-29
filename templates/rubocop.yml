@@ -1,0 +1,60 @@
+require: rubocop-rspec
+
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - 'Guardfile'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'vendor/bundle/**/*'
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 10
+
+Metrics/AbcSize:
+  Max: 10
+
+Metrics/ClassLength:
+  Max: 100
+
+Rails/Output:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/IndentHash:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Style/SignalException:
+  Enabled: false
+
+Style/SingleSpaceBeforeFirstArg:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/AlignParameters:
+  Enabled: false
+
+Style/FirstParameterIndentation:
+  Enabled: false
