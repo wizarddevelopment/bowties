@@ -7,10 +7,12 @@ RSpec.describe "Suspend a new project with default configuration" do
     run_bowties
   end
 
-  it "ensures project specs pass" do
+  it "ensures project tests pass" do
     Dir.chdir(project_path) do
       Bundler.with_clean_env do
-        expect(`rake`).to include('0 failures')
+        output = `rake`
+        expect(output).to include('0 failures')
+        expect(output).to include('no offenses detected')
       end
     end
   end
@@ -43,10 +45,9 @@ RSpec.describe "Suspend a new project with default configuration" do
     expect(File).to exist("#{project_path}/spec/support/i18n.rb")
   end
 
-  it "creates good default .hound.yml" do
-    hound_config_file = IO.read("#{project_path}/.hound.yml")
-
-    expect(hound_config_file).to include "enabled: true"
+  it "creates good default .rubocop.yml" do
+    rubocop_config_file = IO.read("#{project_path}/.rubocop.yml")
+    expect(rubocop_config_file).to include "Metrics/LineLength"
   end
 
   it "ensures newrelic.yml reads NewRelic license from env" do

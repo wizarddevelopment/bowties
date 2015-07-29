@@ -1,6 +1,6 @@
 if Rails.env.development? || Rails.env.test?
   require "bundler/audit/cli"
-
+  task default: "bundler:audit"
   namespace :bundler do
     desc "Updates the ruby-advisory-db and runs audit"
     task :audit do

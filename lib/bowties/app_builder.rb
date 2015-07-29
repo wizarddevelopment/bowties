@@ -58,8 +58,9 @@ module Bowties
       copy_file 'factory_girl_rspec.rb', 'spec/support/factory_girl.rb'
     end
 
-    def set_up_hound
-      copy_file "hound.yml", ".hound.yml"
+    def set_up_rubocop
+      copy_file "rubocop.yml", ".rubocop.yml"
+      copy_file "rubocop.rake", "lib/tasks/rubocop.rake"
     end
 
     def configure_newrelic
@@ -225,6 +226,7 @@ end
     def configure_i18n_tasks
       run "cp $(i18n-tasks gem-path)/templates/rspec/i18n_spec.rb spec/"
       copy_file "config_i18n_tasks.yml", "config/i18n-tasks.yml"
+      replace_in_file "spec/i18n_spec.rb", "'I18n'", "I18n"
     end
 
     def configure_background_jobs_for_rspec
@@ -440,6 +442,10 @@ you can deploy to staging and production with:
         "Rails.application.routes.draw do\nend"
     end
 
+    def autocorrect_for_rubocop_style
+      bundle_command "exec rake rubocop:auto_correct"
+    end
+
     def disable_xml_params
       copy_file 'disable_xml_params.rb', 'config/initializers/disable_xml_params.rb'
     end
@@ -458,6 +464,10 @@ if defined? RSpec
 end
         EOS
       end
+    end
+
+    def add_rubocop_to_default_rake_task
+      append_file "Rakefile", %{\ntask default: :rubocop\n}
     end
 
     private
