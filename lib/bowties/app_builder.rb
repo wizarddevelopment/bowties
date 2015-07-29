@@ -1,6 +1,6 @@
-module Suspenders
+module Bowties
   class AppBuilder < Rails::AppBuilder
-    include Suspenders::Actions
+    include Bowties::Actions
 
     def readme
       template 'README.md.erb', 'README.md'
@@ -182,7 +182,7 @@ end
     end
 
     def set_ruby_to_version_being_used
-      create_file '.ruby-version', "#{Suspenders::RUBY_VERSION}\n"
+      create_file '.ruby-version', "#{Bowties::RUBY_VERSION}\n"
     end
 
     def setup_heroku_specific_gems

@@ -1,3 +1,6 @@
+2.0.0 (July 29, 2015)
+* Long live bowties
+
 1.29.0 (June 16, 2015)
 
 * Generate rake, rails and rspec binstubs with Spring
