@@ -216,4 +216,4 @@ Bowties is maintained and funded by Wizard Development.
 We love open source software!
 We are [available for hire][hire].
 
-[hire]: https://www.wizarddevelopment.com?utm_source=github
+[hire]: http://www.wizarddevelopment.com?utm_source=github
