@@ -201,6 +201,13 @@ Thank you, [contributors] and thoughtbot!
 
 [contributors]: https://github.com/wizarddevelopment/bowties/graphs/contributors
 
+## Release Processes
+
+ - Update [CHANGES.md](CHANGES.md) with release info
+ - Update version number in `/lib/bowties/version.rb`
+ - ensure master is up to date
+ - `rake release`
+
 ## License
 
 Bowties is Copyright © 2015 Wizard Development.

@@ -1,3 +1,6 @@
+2.0.1 (pre-release)
+* Add rubocop support and remove hound
+
 2.0.0 (July 29, 2015)
 * Long live bowties
 
